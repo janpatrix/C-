@@ -2,12 +2,28 @@
 int main()
 {
 	using namespace std;
-	int updates = 6;
-	int * p_updates;
-	p_updates = &updates;
+    char animal[20] = "bear";
+    const char * bird = "wren";
+    char * ps;
 
-	cout << "Values: update = " << updates;
-	cout << ", * p_updates = " << *p_updates << endl;
+    cout << animal << " and " << bird << "\n";
+    cout << "Enter kind of animal: ";
+    cin >> animal;
+
+    ps = animal;
+
+    cout << ps << "!\n";
+    cout << "Before using strcpy():\n";
+    cout << animal << " at " <<  (int *) animal << endl;
+    cout << ps << " at " << (int *) ps << endl;
+
+    ps = new char[strlen(animal) + 1];
+    strcpy(ps, animal);
+
+    cout << "After using strcpy():\n";
+    cout << animal << " at " << &animal << endl;
+    cout << ps << " at " << &ps << endl;
+    delete [] ps;
 	return 0;
 
 }
